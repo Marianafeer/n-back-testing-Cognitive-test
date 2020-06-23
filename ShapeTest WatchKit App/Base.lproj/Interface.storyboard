@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ShapeTest_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="EMA2" id="1PG-j8-gce">
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </label>
+                        <button width="122" alignment="center" verticalAlignment="center" title="Run Test Shape" id="LBe-Oq-lI8">
+                            <color key="backgroundColor" red="0.069151288089459917" green="0.61084311129773594" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="17"/>
+                            <connections>
+                                <segue destination="2zI-eV-cGV" kind="push" id="szB-M9-TTY"/>
+                            </connections>
+                        </button>
+                        <button width="122" height="40" alignment="center" verticalAlignment="center" title="Test Results" id="BxC-y6-YXT">
+                            <color key="backgroundColor" red="0.30339934882517938" green="0.72170498704663211" blue="0.13574322956856624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                        </button>
+                    </items>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-52" y="16"/>
+        </scene>
+        <!--Instructions Interface Controller-->
+        <scene sceneID="aao-HH-5hk">
+            <objects>
+                <controller id="2zI-eV-cGV" customClass="InstructionsInterfaceController" customModule="ShapeTest_WatchKit_Extension">
+                    <items>
+                        <label width="109" height="21" alignment="center" text="INSTRUCTIONS" id="zPK-iE-Tyn">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                        </label>
+                        <separator width="115" alignment="center" id="h1j-hE-dFC">
+                            <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </separator>
+                        <label width="127" height="84" alignment="center" text="Press YES if the shape is the same as the previous one, and NOT if is not. " textAlignment="left" numberOfLines="20" id="cGO-dw-C4M">
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="14"/>
+                        </label>
+                        <button width="102" height="26" alignment="center" title="START" id="o56-Pd-UkU">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.01215754361" green="0.70759556329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="etI-JE-5Y1" kind="push" id="ntj-Kb-Tz8"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="296" y="16"/>
+        </scene>
+        <!--Run Shape Test Interface Controller-->
+        <scene sceneID="1ar-1c-QRr">
+            <objects>
+                <controller id="etI-JE-5Y1" customClass="RunShapeTestInterfaceController">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="3" id="80P-3e-C55">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="25"/>
+                        </label>
+                        <timer alignment="center" previewedSeconds="45" id="990-Q6-DEu">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <calendarUnit key="units" second="YES"/>
+                        </timer>
+                    </items>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="startTimerLabel" destination="80P-3e-C55" id="Vzg-yX-ble"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="619" y="16"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="ShapeTest_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="ShapeTest_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+</document>
