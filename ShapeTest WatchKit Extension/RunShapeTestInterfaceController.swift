@@ -12,6 +12,9 @@ import Foundation
 
 class RunShapeTestInterfaceController: WKInterfaceController {
     
+    @IBOutlet weak var doneButton: WKInterfaceButton!
+    
+    
     
     @IBOutlet weak var shapeTestImage: WKInterfaceImage!
     @IBOutlet weak var shapeTestTimer: WKInterfaceTimer!
@@ -20,7 +23,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     private var startSecondsLeft: Int = 3
     private var mainTimerSecondsLeft: Int? = nil
-    private var timerLeft: Int = 45
+    private var timerLeft: Int = 48
     private var timer: Timer?
     
     @IBOutlet weak var yesButton: WKInterfaceButton!
@@ -82,13 +85,14 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         if startSecondsLeft == 0 {
             print("timer = 0")
             switchToMainTest()
-            
-            
-            //auxx for timer
-            timerLeft -= 1
-            if timerLeft == 0 {
-                finishTest()
             }
+        //auxx for timer
+        timerLeft -= 1
+        if timerLeft == 0 {
+            print("Timer left = 0")
+            
+            showDoneView()
+            
         }
         
     }
@@ -108,7 +112,10 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     
     private func showStartView(){
-        shapeTestImage.setHidden(true)
+        doneButton.setHidden(true)
+        shapeTestImage.setHidden(false)
+        
+        
         yesButton.setHidden(true)
         noButton.setHidden(true)
         shapeTestTimer.setHidden(true)
@@ -118,12 +125,24 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         
     }
     private func showTestView(){
+        getImage()
         startTimerLabel.setHidden(true)
         
         shapeTestTimer.setHidden(false)
         shapeTestImage.setHidden(false)
         yesButton.setHidden(false)
         noButton.setHidden(false)
+    }
+    
+    private func showDoneView(){
+        doneButton.setHidden(false)
+        shapeTestImage.setHidden(true)
+        
+        yesButton.setHidden(true)
+        noButton.setHidden(true)
+        shapeTestTimer.setHidden(false)
+        
+        startTimerLabel.setHidden(true)
     }
     
     private func showNewShape(){
@@ -205,6 +224,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
            finishTest()
     }
        
+    
     
     private func finishTest() {
         
