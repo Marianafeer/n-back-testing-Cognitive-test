@@ -27,6 +27,12 @@
 		56E80D2824A27B0C00B2AFEB /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E80D2124A27B0B00B2AFEB /* Circle.png */; };
 		56E80D2924A27B0C00B2AFEB /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E80D2124A27B0B00B2AFEB /* Circle.png */; };
 		56E80D2A24A27B0C00B2AFEB /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E80D2124A27B0B00B2AFEB /* Circle.png */; };
+		56E80D3424A4480F00B2AFEB /* Instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E80D3324A4480F00B2AFEB /* Instructions.png */; };
+		56E80D3524A4480F00B2AFEB /* Instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E80D3324A4480F00B2AFEB /* Instructions.png */; };
+		56E80D3624A4480F00B2AFEB /* Instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E80D3324A4480F00B2AFEB /* Instructions.png */; };
+		56E80D3824A45DC100B2AFEB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E80D3724A45DC100B2AFEB /* Constants.swift */; };
+		56E80D3A24A4607900B2AFEB /* AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E80D3924A4607900B2AFEB /* AlertData.swift */; };
+		56E80D3C24A4627A00B2AFEB /* SingleShapeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E80D3B24A4627A00B2AFEB /* SingleShapeResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +96,10 @@
 		56E80D1F24A27B0A00B2AFEB /* Diamond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Diamond.png; sourceTree = "<group>"; };
 		56E80D2024A27B0A00B2AFEB /* Triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Triangle.png; sourceTree = "<group>"; };
 		56E80D2124A27B0B00B2AFEB /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
+		56E80D3324A4480F00B2AFEB /* Instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instructions.png; sourceTree = "<group>"; };
+		56E80D3724A45DC100B2AFEB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		56E80D3924A4607900B2AFEB /* AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertData.swift; sourceTree = "<group>"; };
+		56E80D3B24A4627A00B2AFEB /* SingleShapeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleShapeResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +145,12 @@
 		5629180724A1CA1100F9E8FF /* ShapeTest WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				56E80D3724A45DC100B2AFEB /* Constants.swift */,
+				56E80D3924A4607900B2AFEB /* AlertData.swift */,
+				56E80D3B24A4627A00B2AFEB /* SingleShapeResult.swift */,
 				56E80D2124A27B0B00B2AFEB /* Circle.png */,
 				56E80D1F24A27B0A00B2AFEB /* Diamond.png */,
+				56E80D3324A4480F00B2AFEB /* Instructions.png */,
 				56E80D2024A27B0A00B2AFEB /* Triangle.png */,
 				5629180824A1CA1100F9E8FF /* InterfaceController.swift */,
 				56E80D1D24A1EC5200B2AFEB /* RunShapeTestInterfaceController.swift */,
@@ -251,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E80D3424A4480F00B2AFEB /* Instructions.png in Resources */,
 				56E80D2224A27B0C00B2AFEB /* Diamond.png in Resources */,
 				56E80D2824A27B0C00B2AFEB /* Circle.png in Resources */,
 				56E80D2524A27B0C00B2AFEB /* Triangle.png in Resources */,
@@ -261,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E80D3524A4480F00B2AFEB /* Instructions.png in Resources */,
 				56E80D2324A27B0C00B2AFEB /* Diamond.png in Resources */,
 				56E80D2924A27B0C00B2AFEB /* Circle.png in Resources */,
 				56E80D2624A27B0C00B2AFEB /* Triangle.png in Resources */,
@@ -275,6 +291,7 @@
 			files = (
 				56E80D2424A27B0C00B2AFEB /* Diamond.png in Resources */,
 				56E80D2724A27B0C00B2AFEB /* Triangle.png in Resources */,
+				56E80D3624A4480F00B2AFEB /* Instructions.png in Resources */,
 				5629180F24A1CA1200F9E8FF /* Assets.xcassets in Resources */,
 				56E80D2A24A27B0C00B2AFEB /* Circle.png in Resources */,
 			);
@@ -290,7 +307,10 @@
 				5629180D24A1CA1100F9E8FF /* NotificationController.swift in Sources */,
 				56E80D1E24A1EC5200B2AFEB /* RunShapeTestInterfaceController.swift in Sources */,
 				5629182724A1E02F00F9E8FF /* InstructionsInterfaceController.swift in Sources */,
+				56E80D3C24A4627A00B2AFEB /* SingleShapeResult.swift in Sources */,
 				5629182824A1E03100F9E8FF /* InterfaceController.swift in Sources */,
+				56E80D3A24A4607900B2AFEB /* AlertData.swift in Sources */,
+				56E80D3824A45DC100B2AFEB /* Constants.swift in Sources */,
 				5629180B24A1CA1100F9E8FF /* ExtensionDelegate.swift in Sources */,
 				5629182624A1E02D00F9E8FF /* CountdownInterfaceController.swift in Sources */,
 			);

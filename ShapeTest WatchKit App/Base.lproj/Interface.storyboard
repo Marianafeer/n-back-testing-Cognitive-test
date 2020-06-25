@@ -22,8 +22,11 @@
                             </connections>
                         </button>
                         <button width="136" height="42" alignment="center" verticalAlignment="center" title="Test Results" id="BxC-y6-YXT">
-                            <color key="backgroundColor" red="0.30339934882517938" green="0.72170498704663211" blue="0.13574322956856624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.53002327680587769" green="0.94864422082901001" blue="0.071713246405124664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                            <connections>
+                                <segue destination="u28-Qh-UvE" kind="push" id="r75-Vr-BB0"/>
+                            </connections>
                         </button>
                     </items>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,23 +34,29 @@
             </objects>
             <point key="canvasLocation" x="-52" y="16"/>
         </scene>
+        <!--Interface Controller-->
+        <scene sceneID="Qet-zk-dzd">
+            <objects>
+                <controller id="u28-Qh-UvE">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-68" y="370"/>
+        </scene>
         <!--Instructions Interface Controller-->
         <scene sceneID="aao-HH-5hk">
             <objects>
                 <controller id="2zI-eV-cGV" customClass="InstructionsInterfaceController" customModule="ShapeTest_WatchKit_Extension">
                     <items>
-                        <label width="125" height="21" alignment="center" text="INSTRUCTIONS" textAlignment="center" id="zPK-iE-Tyn">
+                        <label width="125" height="21" alignment="center" text="Instructions" textAlignment="center" id="zPK-iE-Tyn">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="boldSystem" pointSize="16"/>
                         </label>
                         <separator width="115" alignment="center" id="h1j-hE-dFC">
                             <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </separator>
-                        <label width="136" height="84" alignment="center" text="Press YES if the shape is the same as the previous one, and NOT if is not. " textAlignment="left" numberOfLines="20" id="cGO-dw-C4M">
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <fontDescription key="font" type="system" pointSize="14"/>
-                        </label>
-                        <button width="102" height="26" alignment="center" title="START" id="o56-Pd-UkU">
+                        <imageView width="136" height="95" alignment="center" image="Instructions" contentMode="scaleAspectFit" id="UZt-xa-QDy"/>
+                        <button width="100" height="29" alignment="center" title="START" id="o56-Pd-UkU">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" red="0.01215754361" green="0.70759556329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -58,37 +67,43 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="296" y="16"/>
+            <point key="canvasLocation" x="296" y="20"/>
         </scene>
         <!--Run Shape Test Interface Controller-->
         <scene sceneID="1ar-1c-QRr">
             <objects>
                 <controller id="etI-JE-5Y1" customClass="RunShapeTestInterfaceController" customModule="ShapeTest_WatchKit_Extension">
                     <items>
-                        <timer width="38" height="28" alignment="center" textAlignment="center" format="abbreviated" previewedSeconds="45" id="990-Q6-DEu">
+                        <timer width="34" height="27" alignment="center" textAlignment="center" format="abbreviated" previewedSeconds="45" id="990-Q6-DEu">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
                             <calendarUnit key="units" second="YES"/>
                         </timer>
                         <group width="1" alignment="center" verticalAlignment="center" layout="overlap" id="2Fa-yF-E9m">
                             <items>
-                                <imageView width="84" height="79" alignment="center" verticalAlignment="center" semanticContentAttribute="spatial" image="Circle" id="SZU-Kw-8Wg"/>
+                                <imageView width="84" height="84" alignment="center" verticalAlignment="center" semanticContentAttribute="spatial" image="Circle" id="SZU-Kw-8Wg"/>
                                 <label width="30" height="34" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" text="3" textAlignment="center" id="80P-3e-C55">
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="25"/>
                                 </label>
                             </items>
                         </group>
-                        <group width="136" height="44" alignment="center" verticalAlignment="center" layout="overlap" id="DOt-ir-5VY">
+                        <group width="136" height="44" alignment="center" verticalAlignment="center" layout="overlap" id="KJi-F6-o9m">
                             <items>
-                                <button width="59" alignment="right" title="NO" id="ESs-dD-YxU">
+                                <button width="58" alignment="right" title="NO" id="ESs-dD-YxU">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" red="0.86828714609146118" green="0.23194622993469238" blue="0.18867287039756775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                                    <connections>
+                                        <action selector="noButtonPressed" destination="etI-JE-5Y1" id="jzB-fE-98a"/>
+                                    </connections>
                                 </button>
-                                <button width="64" alignment="left" title="YES" id="uc7-bI-gAO">
+                                <button width="60" alignment="left" title="YES" id="uc7-bI-gAO">
                                     <color key="backgroundColor" red="0.41287142038345337" green="0.79146242141723633" blue="0.089261449873447418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
+                                    <connections>
+                                        <action selector="yesButtonPressed" destination="etI-JE-5Y1" id="BMp-d9-q8R"/>
+                                    </connections>
                                 </button>
                             </items>
                         </group>
@@ -103,7 +118,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="619" y="-7"/>
+            <point key="canvasLocation" x="640" y="23"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -139,5 +154,6 @@
     </scenes>
     <resources>
         <image name="Circle" width="222" height="222"/>
+        <image name="Instructions" width="344" height="221"/>
     </resources>
 </document>
