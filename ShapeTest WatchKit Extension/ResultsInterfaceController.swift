@@ -12,12 +12,7 @@ import Foundation
 
 class ResultsInterfaceController: WKInterfaceController {
 
-    @IBAction func okButtonPressed() {
-        print("Ok button was pressed")
-    
-    }
-    
-    
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
