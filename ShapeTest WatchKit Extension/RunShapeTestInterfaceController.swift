@@ -12,6 +12,8 @@ import Foundation
 
 class RunShapeTestInterfaceController: WKInterfaceController {
     
+    
+    @IBOutlet weak var plusOneLabel: WKInterfaceLabel!
     @IBOutlet weak var doneButton: WKInterfaceButton!
     
     
@@ -118,6 +120,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         noButton.setHidden(true)
         shapeTestTimer.setHidden(true)
         startTimerLabel.setHidden(false)
+        
+        plusOneLabel.setHidden(true)
     }
     
     private func showTestView(){
@@ -128,6 +132,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         shapeTestImage.setHidden(false)
         yesButton.setHidden(false)
         noButton.setHidden(false)
+        
+        plusOneLabel.setHidden(true)
     }
     
     private func showDoneView(){
@@ -139,9 +145,13 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         shapeTestTimer.setHidden(false)
         
         startTimerLabel.setHidden(true)
+        
+        plusOneLabel.setHidden(true)
     }
     
     private func showNewShape(){
+        plusOneLabel.setHidden(true)
+        
         // 0 = 0
         previousShapeIndex = currentShapeIndex
         
@@ -195,6 +205,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     }
     
     private func handleButtonPress(answerIsForSameShape: Bool) {
+
+        
         let currentShapeSameAsPrevious = currentShapeIndex == previousShapeIndex
         let answerIsCorrect = currentShapeSameAsPrevious ? answerIsForSameShape : !answerIsForSameShape
            
@@ -203,9 +215,14 @@ class RunShapeTestInterfaceController: WKInterfaceController {
            
         //score will be 1(points) if 'answerIsCorrect' is true, 0 if answer is not correct.
         let score = answerIsCorrect ? 1 : 0
-           print("current point made: \(score)")
-        
+        print("current point made: \(score)")
+    
         currentScore += score
+        
+        if score == 1 {
+            plusOneLabel.setHidden(false)
+        }
+        
         
         //addShapeResult(reactionTime: Float, shapeName: String, previousShapeName: String, score: Int)
         shapeTestPrompt.addShapeResult(reactionTime: Float(shapeReactionTime), shapeName: currentShapeName, previousShapeName: previousShapeName, score: score)
@@ -218,10 +235,19 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         })
     }
        
-    
+    /*
     @IBAction func DoneBtnTapped() {
         print("Done with Shape Test")
         print("Current Score: \(currentScore)")
+        //pushController(withName: "Current Results", context: "\(currentScore)")
+    }*/
+    
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        print("Current Score: \(currentScore)")
+        if segueIdentifier == "toCurrentResults" {
+            return "\(currentScore)"
+        }
+        return nil
     }
     
     private func finishTest() {
@@ -233,8 +259,6 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         }
           
         dismiss()*/
-        
-        pushController(withName: "InterfaceController", context: nil)
  
     }
     

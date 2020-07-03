@@ -12,10 +12,17 @@ import Foundation
 
 class CurrentResultsInterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var scoreLabel: WKInterfaceLabel!
+    
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
         // Configure interface objects here.
+        
+        if let results = context as? String {
+            scoreLabel.setText("Score: \(results)")
+        }
+        
     }
 
     override func willActivate() {
