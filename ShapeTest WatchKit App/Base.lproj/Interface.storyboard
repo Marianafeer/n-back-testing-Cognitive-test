@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -11,7 +11,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ShapeTest_WatchKit_Extension">
                     <items>
-                        <label alignment="center" text="EMA2" id="1PG-j8-gce">
+                        <label alignment="center" text="SHAPE TEST" id="1PG-j8-gce">
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         </label>
                         <button width="136" alignment="center" verticalAlignment="center" title="Run Test Shape" id="LBe-Oq-lI8">
@@ -67,11 +67,14 @@
             <objects>
                 <controller id="2zI-eV-cGV" customClass="InstructionsInterfaceController" customModule="ShapeTest_WatchKit_Extension">
                     <items>
-                        <label width="125" height="17" alignment="center" text="INSTRUCTIONS" textAlignment="center" id="zPK-iE-Tyn">
+                        <label width="136" height="17" alignment="center" text="INSTRUCTIONS" textAlignment="center" id="zPK-iE-Tyn">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="font" type="system" weight="medium" pointSize="18"/>
+                            <fontDescription key="font" type="system" pointSize="16"/>
                         </label>
-                        <imageView width="136" height="88" alignment="left" image="ins" id="WTQ-py-xOP"/>
+                        <separator width="122" alignment="center" id="nHw-Pg-OYk">
+                            <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        </separator>
+                        <imageView height="88" alignment="left" image="instructionsImage" id="NxP-DG-bIe"/>
                         <button width="100" height="29" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" title="START" id="o56-Pd-UkU">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" red="0.01215754361" green="0.70759556329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,6 +108,9 @@
                                 <button width="114" alignment="center" verticalAlignment="center" title="Done" id="Hwo-HM-aqP">
                                     <color key="backgroundColor" red="0.0" green="0.64326625429999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                                    <connections>
+                                        <action selector="DoneBtnTapped" destination="etI-JE-5Y1" id="y6S-Qd-mc2"/>
+                                    </connections>
                                 </button>
                             </items>
                         </group>
@@ -141,6 +147,26 @@
             </objects>
             <point key="canvasLocation" x="640" y="19.5"/>
         </scene>
+        <!--toCurrentResults-->
+        <scene sceneID="SUk-PI-Ft5">
+            <objects>
+                <controller identifier="toCurrentResults" id="Vsy-lN-lDm" customClass="CurrentResultsInterfaceController" customModule="ShapeTest_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="RESULTS" id="UXE-0L-CBK">
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        </label>
+                        <separator width="110" alignment="center" id="Bbj-II-G03">
+                            <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </separator>
+                        <label width="62" height="34" alignment="left" text="Score:" id="KEJ-YD-hhw">
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        </label>
+                    </items>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="975" y="4"/>
+        </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
@@ -175,6 +201,6 @@
     </scenes>
     <resources>
         <image name="Circle" width="222" height="222"/>
-        <image name="ins" width="301" height="199"/>
+        <image name="instructionsImage" width="247" height="167"/>
     </resources>
 </document>

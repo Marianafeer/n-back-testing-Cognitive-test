@@ -15,7 +15,6 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     @IBOutlet weak var doneButton: WKInterfaceButton!
     
     
-    
     @IBOutlet weak var shapeTestImage: WKInterfaceImage!
     @IBOutlet weak var shapeTestTimer: WKInterfaceTimer!
     @IBOutlet weak var startTimerLabel: WKInterfaceLabel!
@@ -36,6 +35,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     private var currentShapeIsRepeat = false
     private var currentShapeStartTime = Date()
     
+    private var currentScore: Int = 0
+    
     private var currentShapeName: String {
         return Constants.shapeNames[currentShapeIndex]
     }
@@ -43,7 +44,6 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     private var previousShapeName: String {
         return Constants.shapeNames[previousShapeIndex]
     }
-    
     
     let images = ["Circle.png", "Diamond.png", "Triangle.png"]
     
@@ -69,12 +69,11 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         
     }
     private func startShapesTest() {
-        //mainTimerSecondsLeft = shapeTestPrompt.duration
+        mainTimerSecondsLeft = shapeTestPrompt.duration
         setTimerLabels()
         showNewShape()
         showStartView()
-        
-        
+         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
     }
     
@@ -83,14 +82,13 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         startTimerLabel?.setText("\(startSecondsLeft)")
         
         if startSecondsLeft == 0 {
-            print("timer = 0")
+            print("timer = 0 Sec")
             switchToMainTest()
             }
         //auxx for timer
         timerLeft -= 1
         if timerLeft == 0 {
             print("Timer left = 0")
-            
             showDoneView()
             
         }
@@ -107,8 +105,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         shapeTestTimer.setDate(NSDate(timeIntervalSinceNow:  45) as Date)
         shapeTestTimer.start()
         
-        showNewShape()
         showTestView()
+        showNewShape()
     }
     
     
@@ -116,15 +114,12 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         doneButton.setHidden(true)
         shapeTestImage.setHidden(false)
         
-        
         yesButton.setHidden(true)
         noButton.setHidden(true)
         shapeTestTimer.setHidden(true)
-        
         startTimerLabel.setHidden(false)
-        
-        
     }
+    
     private func showTestView(){
         //getImage()
         startTimerLabel.setHidden(true)
@@ -159,17 +154,15 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         }
         
         currentShapeIndex = newShapeIndex
-        currentShapeIsRepeat = currentShapeIndex == previousShapeIndex
+        currentShapeIsRepeat = currentShapeIndex == previousShapeIndex //true
         updateShapeViewToCurrent()
         
         currentShapeStartTime = Date()
-        
-        
+        print(currentShapeStartTime)
     }
     
-    
+    //function to get random images
     private func getImage() {
-        
         let randomImage = images.randomElement()
         let currentImage = UIImage(named: "\(randomImage!)")
         
@@ -178,7 +171,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     
     //Bryans code
-    
+    //gets random index for the next image
     private func pickNewShapeIndex() -> Int {
         return Int(arc4random_uniform(UInt32(Constants.numberShapeTestShapes)))
         
@@ -208,22 +201,28 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         let shapeEndTime = Date()
         let shapeReactionTime = shapeEndTime.timeIntervalSince(currentShapeStartTime)
            
+        //score will be 1(points) if 'answerIsCorrect' is true, 0 if answer is not correct.
         let score = answerIsCorrect ? 1 : 0
-           
+           print("current point made: \(score)")
+        
+        currentScore += score
+        
+        //addShapeResult(reactionTime: Float, shapeName: String, previousShapeName: String, score: Int)
         shapeTestPrompt.addShapeResult(reactionTime: Float(shapeReactionTime), shapeName: currentShapeName, previousShapeName: previousShapeName, score: score)
            
         shapeTestImage.setHidden(true)
            
+        //async lets the calling queue move on without waiting until the dispatched block is executed
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.shapeTestShowDelay, execute: {
             self.showNewShape()
         })
     }
        
-    @IBAction func backPressed() {
-           finishTest()
-    }
-       
     
+    @IBAction func DoneBtnTapped() {
+        print("Done with Shape Test")
+        print("Current Score: \(currentScore)")
+    }
     
     private func finishTest() {
         
@@ -238,6 +237,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         pushController(withName: "InterfaceController", context: nil)
  
     }
+    
     
     
     

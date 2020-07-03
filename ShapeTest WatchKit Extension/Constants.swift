@@ -13,5 +13,5 @@ class Constants {
     static let shapeTestDuration = 45
     static let shapeNames = ["Circle", "Diamond", "Triangle"]
     static let numberShapeTestShapes = Constants.shapeNames.count
-    static let shapeTestShowDelay = 0.5
+    static let shapeTestShowDelay = 0.3
 }
