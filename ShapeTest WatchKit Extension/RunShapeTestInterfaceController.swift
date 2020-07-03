@@ -107,6 +107,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         shapeTestTimer.setDate(NSDate(timeIntervalSinceNow:  45) as Date)
         shapeTestTimer.start()
         
+        showNewShape()
         showTestView()
     }
     
@@ -125,7 +126,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         
     }
     private func showTestView(){
-        getImage()
+        //getImage()
         startTimerLabel.setHidden(true)
         
         shapeTestTimer.setHidden(false)
@@ -146,8 +147,10 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     }
     
     private func showNewShape(){
+        // 0 = 0
         previousShapeIndex = currentShapeIndex
         
+        // newShapeIndex  = random from 0,1,2 index
         var newShapeIndex = pickNewShapeIndex()
         
         //Avoid repeating the same shape more than once:
@@ -171,18 +174,14 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         let currentImage = UIImage(named: "\(randomImage!)")
         
         shapeTestImage.setImage(currentImage)
-        
     }
-    
-    
-    
     
     
     //Bryans code
     
     private func pickNewShapeIndex() -> Int {
+        return Int(arc4random_uniform(UInt32(Constants.numberShapeTestShapes)))
         
-        return 1
     }
     
     private func updateShapeViewToCurrent() {
@@ -193,13 +192,13 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     }
     
     @IBAction func yesButtonPressed() {
-        //handleButtonPress(answerIsForSameShape: true)
-        getImage()
+        handleButtonPress(answerIsForSameShape: true)
+        //getImage()
     }
     
     @IBAction func noButtonPressed() {
-        //handleButtonPress(answerIsForSameShape: false)
-        getImage()
+        handleButtonPress(answerIsForSameShape: false)
+        //getImage()
     }
     
     private func handleButtonPress(answerIsForSameShape: Bool) {

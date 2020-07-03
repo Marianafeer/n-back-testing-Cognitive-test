@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16097" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -60,7 +60,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-280" y="439"/>
+            <point key="canvasLocation" x="-46" y="505"/>
         </scene>
         <!--Instructions Interface Controller-->
         <scene sceneID="aao-HH-5hk">
@@ -71,12 +71,12 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="font" type="system" weight="medium" pointSize="18"/>
                         </label>
-                        <imageView height="84" alignment="left" image="ins" id="WTQ-py-xOP"/>
+                        <imageView width="136" height="88" alignment="left" image="ins" id="WTQ-py-xOP"/>
                         <button width="100" height="29" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" title="START" id="o56-Pd-UkU">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" red="0.01215754361" green="0.70759556329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="etI-JE-5Y1" kind="push" id="NZK-Vu-1sK"/>
+                                <segue destination="etI-JE-5Y1" kind="push" id="iHx-pX-2q6"/>
                             </connections>
                         </button>
                     </items>
@@ -110,7 +110,7 @@
                         </group>
                         <group width="136" height="44" alignment="center" verticalAlignment="center" layout="overlap" id="KJi-F6-o9m">
                             <items>
-                                <button width="58" alignment="right" title="NO" id="ESs-dD-YxU">
+                                <button width="58" height="35" alignment="right" title="NO" id="ESs-dD-YxU">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" red="0.86828714609146118" green="0.23194622993469238" blue="0.18867287039756775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
@@ -118,7 +118,7 @@
                                         <action selector="noButtonPressed" destination="etI-JE-5Y1" id="jzB-fE-98a"/>
                                     </connections>
                                 </button>
-                                <button width="60" alignment="left" title="YES" id="uc7-bI-gAO">
+                                <button width="60" height="35" alignment="left" title="YES" id="uc7-bI-gAO">
                                     <color key="backgroundColor" red="0.41287142038345337" green="0.79146242141723633" blue="0.089261449873447418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
                                     <connections>
