@@ -13,17 +13,20 @@
                     <items>
                         <label alignment="center" text="SHAPE TEST" id="1PG-j8-gce">
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="font" type="system" pointSize="20"/>
                         </label>
-                        <button width="136" alignment="center" verticalAlignment="center" title="Run Test Shape" id="LBe-Oq-lI8">
+                        <button width="136" alignment="center" verticalAlignment="center" title="Run Shape Test" id="LBe-Oq-lI8">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" red="0.069151288089459917" green="0.61084311129773594" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="boldSystem" pointSize="17"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="20"/>
                             <connections>
                                 <segue destination="2zI-eV-cGV" kind="push" id="szB-M9-TTY"/>
                             </connections>
                         </button>
-                        <button width="136" height="42" alignment="center" verticalAlignment="center" title="Test Results" id="BxC-y6-YXT">
-                            <color key="backgroundColor" red="0.53002327680587769" green="0.94864422082901001" blue="0.071713246405124664" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="boldSystem" pointSize="18"/>
+                        <button width="136" height="47" alignment="center" verticalAlignment="center" title="Test Results" id="BxC-y6-YXT">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.68255923879442937" green="0.94864422082901001" blue="0.22757374237884884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="21"/>
                             <connections>
                                 <segue destination="u28-Qh-UvE" kind="push" id="r75-Vr-BB0"/>
                             </connections>
