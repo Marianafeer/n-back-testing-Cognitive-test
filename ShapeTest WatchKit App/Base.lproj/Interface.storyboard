@@ -81,8 +81,8 @@
                                 </separator>
                             </items>
                         </group>
-                        <imageView height="84" alignment="left" image="instructionsImage" id="NxP-DG-bIe"/>
-                        <button width="100" height="29" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" title="START" id="o56-Pd-UkU">
+                        <imageView width="126" height="84" alignment="center" image="instructionsImage" id="NxP-DG-bIe"/>
+                        <button width="104" height="31" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" title="START" id="o56-Pd-UkU">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" red="0.01215754361" green="0.70759556329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -127,15 +127,16 @@
                         </group>
                         <group width="136" height="44" alignment="center" verticalAlignment="center" layout="overlap" id="KJi-F6-o9m">
                             <items>
-                                <button width="58" height="37" alignment="right" title="NO" id="ESs-dD-YxU">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button width="58" height="43" alignment="right" title="NO" id="ESs-dD-YxU">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" red="0.86828714609146118" green="0.23194622993469238" blue="0.18867287039756775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                     <connections>
                                         <action selector="noButtonPressed" destination="etI-JE-5Y1" id="jzB-fE-98a"/>
                                     </connections>
                                 </button>
-                                <button width="60" height="36" alignment="left" title="YES" id="uc7-bI-gAO">
+                                <button width="60" height="43" alignment="left" title="YES" id="uc7-bI-gAO">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" red="0.41287142038345337" green="0.79146242141723633" blue="0.089261449873447418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
                                     <connections>
@@ -172,6 +173,7 @@
                         </separator>
                         <label width="100" height="34" alignment="center" text="Score:" id="KEJ-YD-hhw">
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <fontDescription key="font" type="system" pointSize="19"/>
                         </label>
                     </items>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
