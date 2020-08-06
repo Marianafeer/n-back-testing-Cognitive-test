@@ -15,7 +15,7 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="font" type="system" pointSize="20"/>
                         </label>
-                        <button width="136" alignment="center" verticalAlignment="center" title="Run Shape Test" id="LBe-Oq-lI8">
+                        <button width="136" height="53" alignment="center" verticalAlignment="center" title="Run Shape Test" id="LBe-Oq-lI8">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="backgroundColor" red="0.069151288089459917" green="0.61084311129773594" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="20"/>
@@ -23,9 +23,9 @@
                                 <segue destination="2zI-eV-cGV" kind="push" id="szB-M9-TTY"/>
                             </connections>
                         </button>
-                        <button width="136" height="47" alignment="center" verticalAlignment="center" title="Test Results" id="BxC-y6-YXT">
+                        <button width="136" height="55" alignment="center" verticalAlignment="center" title="Test Results" id="BxC-y6-YXT">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="backgroundColor" red="0.68255923879442937" green="0.94864422082901001" blue="0.22757374237884884" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.99558192491531372" green="0.89678490161895752" blue="0.004005922470241785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="boldSystem" pointSize="21"/>
                             <connections>
                                 <segue destination="u28-Qh-UvE" kind="push" id="r75-Vr-BB0"/>
@@ -70,48 +70,51 @@
             <objects>
                 <controller id="2zI-eV-cGV" customClass="InstructionsInterfaceController" customModule="ShapeTest_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="overlap" id="ge9-76-fQY">
+                        <group width="129" height="150" alignment="center" layout="vertical" id="ge9-76-fQY">
                             <items>
-                                <label width="136" height="22" alignment="center" verticalAlignment="center" semanticContentAttribute="spatial" text="INSTRUCTIONS" textAlignment="center" id="zPK-iE-Tyn">
+                                <label width="136" height="13" alignment="center" semanticContentAttribute="spatial" text="INSTRUCTIONS" textAlignment="center" baselineAdjustment="alignCenters" id="zPK-iE-Tyn">
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="17"/>
                                 </label>
-                                <separator width="127" height="1" alignment="center" verticalAlignment="bottom" semanticContentAttribute="spatial" id="Dxw-nZ-en4">
-                                    <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </separator>
+                                <imageView width="136" height="85" alignment="center" verticalAlignment="center" image="Frame2" id="NxP-DG-bIe"/>
+                                <button width="104" height="31" alignment="center" verticalAlignment="bottom" semanticContentAttribute="playback" title="START" id="o56-Pd-UkU">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" red="0.01215754361" green="0.70759556329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="20"/>
+                                    <connections>
+                                        <segue destination="etI-JE-5Y1" kind="push" id="iHx-pX-2q6"/>
+                                    </connections>
+                                </button>
                             </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="4" bottom="2"/>
                         </group>
-                        <imageView width="126" height="84" alignment="center" image="instructionsImage" id="NxP-DG-bIe"/>
-                        <button width="104" height="31" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" title="START" id="o56-Pd-UkU">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="backgroundColor" red="0.01215754361" green="0.70759556329999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="etI-JE-5Y1" kind="push" id="iHx-pX-2q6"/>
-                            </connections>
-                        </button>
                     </items>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="295" y="12"/>
+            <point key="canvasLocation" x="295" y="28"/>
         </scene>
         <!--Run Shape Test Interface Controller-->
         <scene sceneID="1ar-1c-QRr">
             <objects>
                 <controller id="etI-JE-5Y1" customClass="RunShapeTestInterfaceController" customModule="ShapeTest_WatchKit_Extension">
                     <items>
-                        <timer width="34" height="27" alignment="center" semanticContentAttribute="playback" textAlignment="center" format="abbreviated" previewedSeconds="45" id="990-Q6-DEu">
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
-                            <calendarUnit key="units" second="YES"/>
-                        </timer>
-                        <label width="30" height="27" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" text="3" textAlignment="center" id="80P-3e-C55">
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="font" type="boldSystem" pointSize="25"/>
-                        </label>
+                        <group width="1" height="121" alignment="left" layout="overlap" id="D6R-2Q-g7a">
+                            <items>
+                                <timer width="40" height="23" alignment="left" semanticContentAttribute="playback" textAlignment="center" format="abbreviated" previewedSeconds="46" id="990-Q6-DEu">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="22"/>
+                                    <calendarUnit key="units" second="YES"/>
+                                </timer>
+                                <label width="40" height="21" alignment="center" verticalAlignment="center" semanticContentAttribute="playback" text="3" textAlignment="center" id="80P-3e-C55">
+                                    <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="26"/>
+                                </label>
+                                <imageView width="101" height="103" alignment="center" verticalAlignment="center" semanticContentAttribute="spatial" image="Circle" id="SZU-Kw-8Wg"/>
+                            </items>
+                        </group>
                         <group width="1" alignment="center" verticalAlignment="center" layout="overlap" id="2Fa-yF-E9m">
                             <items>
-                                <imageView width="84" height="84" alignment="center" verticalAlignment="center" semanticContentAttribute="spatial" image="Circle" id="SZU-Kw-8Wg"/>
                                 <button width="114" alignment="center" verticalAlignment="center" title="Done" id="Hwo-HM-aqP">
                                     <color key="backgroundColor" red="0.0" green="0.64326625429999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
@@ -125,12 +128,12 @@
                                 </label>
                             </items>
                         </group>
-                        <group width="136" height="44" alignment="center" verticalAlignment="center" layout="overlap" id="KJi-F6-o9m">
+                        <group width="136" height="35" alignment="center" verticalAlignment="center" layout="overlap" id="KJi-F6-o9m">
                             <items>
                                 <button width="58" height="43" alignment="right" title="NO" id="ESs-dD-YxU">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" red="0.86828714609146118" green="0.23194622993469238" blue="0.18867287039756775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="23"/>
                                     <connections>
                                         <action selector="noButtonPressed" destination="etI-JE-5Y1" id="jzB-fE-98a"/>
                                     </connections>
@@ -138,12 +141,13 @@
                                 <button width="60" height="43" alignment="left" title="YES" id="uc7-bI-gAO">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" red="0.41287142038345337" green="0.79146242141723633" blue="0.089261449873447418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="23"/>
                                     <connections>
                                         <action selector="yesButtonPressed" destination="etI-JE-5Y1" id="BMp-d9-q8R"/>
                                     </connections>
                                 </button>
                             </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="1"/>
                         </group>
                     </items>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,7 +162,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="640" y="19.5"/>
+            <point key="canvasLocation" x="640" y="30.5"/>
         </scene>
         <!--Current Results-->
         <scene sceneID="SUk-PI-Ft5">
@@ -218,6 +222,6 @@
     </scenes>
     <resources>
         <image name="Circle" width="222" height="222"/>
-        <image name="instructionsImage" width="247" height="167"/>
+        <image name="Frame2" width="265" height="146"/>
     </resources>
 </document>

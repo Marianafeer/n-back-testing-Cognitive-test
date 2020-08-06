@@ -23,7 +23,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     
     private var startSecondsLeft: Int = 3
-    private var mainTimerSecondsLeft: Int? = nil
+    private var TestSecondsLeft: Int? = nil
     private var timerLeft: Int = 48
     private var timer: Timer?
     
@@ -67,11 +67,12 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         super.didDeactivate()
         
         timer?.invalidate()
-        
-        
     }
+    
+    
     private func startShapesTest() {
-        mainTimerSecondsLeft = shapeTestPrompt.duration
+        //keeping track of the secondsLeft
+        TestSecondsLeft = shapeTestPrompt.duration
         setTimerLabels()
         showNewShape()
         showStartView()
@@ -253,7 +254,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     private func finishTest() {
         
         /*
-        if mainTimerSecondsLeft != nil {
+        if TestSecondsLeft != nil {
             shapeTestPrompt.completedDuration = shapeTestPrompt.duration - mainTimerSecondsLeft!
             shapeTestPrompt.finishedTime = Date()
         }
