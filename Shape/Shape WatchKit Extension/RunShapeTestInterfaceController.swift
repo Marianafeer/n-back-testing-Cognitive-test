@@ -13,19 +13,33 @@ import Foundation
 class RunShapeTestInterfaceController: WKInterfaceController {
     
     private var timer: Timer?
+    private var startCountdown: Int = 3
     
+    //UI elements
     @IBOutlet weak var startCountdownLabel: WKInterfaceLabel!
     @IBOutlet weak var shapeImage: WKInterfaceImage!
     @IBOutlet weak var testTimer: WKInterfaceTimer!
     @IBOutlet weak var noButton: WKInterfaceButton!
     @IBOutlet weak var yesButton: WKInterfaceButton!
     
+    //ShapeInfo
+    private var currentShapeIndex: Int = 0
+    private var previousShapeIndex: Int = 0
+    private var currentShapeRepeat = false
+    private var currentShapeStartTime = Date()
     
-    private var startCountdown: Int = 3
+    //Get currentShapeName and previousShapeName by index
+    private var currentShapeName: String {
+        return Constants.shapeNames[currentShapeIndex]
+    }
+    private var previousShapeName: String {
+        return Constants.shapeNames[currentShapeIndex]
+    }
+    
+    shapeTestPrompt = ShapeTest()
     
     
-    
-
+    //------------
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -43,10 +57,10 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    
     @objc func startShapeTest() {
         showStartView()
-        
-    
+        showNewShape()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
     }
     
@@ -61,11 +75,10 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     @objc func switchToMainTest(){
         showTestView()
-        
-        
+        //showNewShape()
     }
     
-    //views
+    //UI Views
     @objc func showStartView(){
         testTimer.setHidden(true)
         startCountdownLabel.setHidden(false)
@@ -82,8 +95,56 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         testTimer.start()
     }
     
-    @objc func showNewShape() {
-        
+    //ShapeTest starts running
+    @objc func pickNewShapeIndex() -> Int {
+        return Int(arc4random_uniform(UInt32(Constants.numberShapeTestShapes)))
     }
+    
+    @objc func showNewShape(){
+        previousShapeIndex = currentShapeIndex
+        
+        var newShapeIndex = pickNewShapeIndex()
+        
+        //Avoid index repetition more than once
+        while currentShapeRepeat && currentShapeIndex == newShapeIndex {
+            newShapeIndex = pickNewShapeIndex()
+        }
+        currentShapeIndex = newShapeIndex
+        //update currentShapeRepeat if currentShapeIndex = previousShapeIndex
+        currentShapeRepeat = currentShapeIndex == previousShapeIndex
+        
+        currentShapeStartTime = Date()
+        updateShape()
+                
+    }
+    @objc func updateShape(){
+        if shapeImage != nil {
+            shapeImage.setImage(UIImage(named: currentShapeName))
+        }
+    }
+    //YES-NO buttons are pressed -> showNewShape and check accuracy with previousShape
+    
+    @IBAction func noButtonPressed() {
+        handdleButtonPress(answerIsForSameShape: false)
+    }
+    @IBAction func yesButtonPressed() {
+        handdleButtonPress(answerIsForSameShape: true)
+    }
+    
+    //evaluate users response
+    private func handdleButtonPress(answerIsForSameShape:Bool) {
+        
+        let currentShapeSameAsPrevious = currentShapeIndex == previousShapeIndex
+        let answerIsCorrect = currentShapeSameAsPrevious ? answerIsForSameShape : !answerIsForSameShape
+        
+        let shapeEndTime = Date()
+        let shapeReactionTime = shapeEndTime.timeIntervalSince(currentShapeStartTime)
+        
+        let score = answerIsCorrect ? 1 : 0
+        //adding results per shape
+        //
+    }
+    
+    
     
 }

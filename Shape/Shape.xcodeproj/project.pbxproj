@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		567D013824E5B537007E67CC /* ShapeTestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567D013724E5B537007E67CC /* ShapeTestData.swift */; };
+		567D013A24E5BFB3007E67CC /* SingleShapeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567D013924E5BFB3007E67CC /* SingleShapeResult.swift */; };
 		568A68D724D288B000B66059 /* Shape WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 568A68D624D288B000B66059 /* Shape WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		568A68DD24D288B000B66059 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568A68DB24D288B000B66059 /* Interface.storyboard */; };
 		568A68DF24D288C000B66059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568A68DE24D288C000B66059 /* Assets.xcassets */; };
@@ -74,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		567D013724E5B537007E67CC /* ShapeTestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeTestData.swift; sourceTree = "<group>"; };
+		567D013924E5BFB3007E67CC /* SingleShapeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleShapeResult.swift; sourceTree = "<group>"; };
 		568A68D224D288AF00B66059 /* Shape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		568A68D624D288B000B66059 /* Shape WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shape WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		568A68DC24D288B000B66059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -108,7 +112,6 @@
 		568A68CB24D288AF00B66059 = {
 			isa = PBXGroup;
 			children = (
-				568A691524D9E16200B66059 /* ShapeTestConstants.swift */,
 				568A68DA24D288B000B66059 /* Shape WatchKit App */,
 				568A68E924D288C100B66059 /* Shape WatchKit Extension */,
 				568A68D324D288AF00B66059 /* Products */,
@@ -139,8 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				568A691324D293F500B66059 /* RunShapeTestInterfaceController.swift */,
+				568A691524D9E16200B66059 /* ShapeTestConstants.swift */,
 				568A68EA24D288C100B66059 /* InterfaceController.swift */,
 				568A68EC24D288C100B66059 /* ExtensionDelegate.swift */,
+				567D013724E5B537007E67CC /* ShapeTestData.swift */,
+				567D013924E5BFB3007E67CC /* SingleShapeResult.swift */,
 				568A68EE24D288C100B66059 /* NotificationController.swift */,
 				568A690124D28B2000B66059 /* Frame2.png */,
 				568A690D24D2918A00B66059 /* Triangle.png */,
@@ -297,6 +303,8 @@
 				568A68ED24D288C100B66059 /* ExtensionDelegate.swift in Sources */,
 				568A68EB24D288C100B66059 /* InterfaceController.swift in Sources */,
 				568A691424D293F500B66059 /* RunShapeTestInterfaceController.swift in Sources */,
+				567D013824E5B537007E67CC /* ShapeTestData.swift in Sources */,
+				567D013A24E5BFB3007E67CC /* SingleShapeResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
