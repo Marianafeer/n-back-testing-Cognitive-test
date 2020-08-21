@@ -14,6 +14,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     private var timer: Timer?
     private var startCountdown: Int = 3
+    private var testTimerSecondsLeft: Int? = nil
     
     //UI elements
     @IBOutlet weak var startCountdownLabel: WKInterfaceLabel!
@@ -22,21 +23,26 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     @IBOutlet weak var noButton: WKInterfaceButton!
     @IBOutlet weak var yesButton: WKInterfaceButton!
     
-    //ShapeInfo
+    //Single ShapeInfo
     private var currentShapeIndex: Int = 0
     private var previousShapeIndex: Int = 0
     private var currentShapeRepeat = false
     private var currentShapeStartTime = Date()
+    
+    
+    private var testScore: Int = 0
+    private var numberOfShapes: Int = 0
+    
     
     //Get currentShapeName and previousShapeName by index
     private var currentShapeName: String {
         return Constants.shapeNames[currentShapeIndex]
     }
     private var previousShapeName: String {
-        return Constants.shapeNames[currentShapeIndex]
+        return Constants.shapeNames[previousShapeIndex]
     }
     
-    shapeTestPrompt = ShapeTest()
+    var shapeTestPrompt = ShapeTest()
     
     
     //------------
@@ -49,18 +55,34 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        /*
+        let filename = "Test"
+        let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropiateFor: nil, create: true)
+        let fileURL = DocumentDirURL.appendingPathComponent(filename ).appendingPathExtension("txt")
+        */
+        
         startShapeTest()
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
+        //Cancel is pressed
+        print("Test Canceled or Finished \n")
+        finishTest()
+        timer?.invalidate()
+        
     }
 
     
     @objc func startShapeTest() {
+        testTimerSecondsLeft = shapeTestPrompt.duration
+        
         showStartView()
         showNewShape()
+        
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
     }
     
@@ -71,11 +93,21 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         if startCountdown == 0 {
             switchToMainTest()
         }
+        
+        if startCountdown <= 0 && testTimerSecondsLeft != nil {
+            testTimerSecondsLeft! -= 1
+        }
+        
+        if testTimerSecondsLeft != nil && testTimerSecondsLeft! <= 0 {
+            print("About to finish the test \n")
+            //end test
+            finishTest()
+        }
     }
     
     @objc func switchToMainTest(){
         showTestView()
-        //showNewShape()
+        showNewShape()
     }
     
     //UI Views
@@ -84,6 +116,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         startCountdownLabel.setHidden(false)
         noButton.setEnabled(false)
         yesButton.setEnabled(false)
+        
+        shapeImage?.setHidden(false)
     }
     
     @objc func showTestView(){
@@ -91,8 +125,20 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         startCountdownLabel.setHidden(true)
         noButton.setEnabled(true)
         yesButton.setEnabled(true)
+        
+        shapeImage.setHidden(false)
+        
         testTimer.setDate(NSDate(timeIntervalSinceNow:  45) as Date)
         testTimer.start()
+    }
+    
+    @objc func testEndedView() {
+        testTimer.setHidden(true)
+        startCountdownLabel.setHidden(true)
+        noButton.setHidden(true)
+        yesButton.setHidden(true)
+        
+        shapeImage?.setHidden(true)
     }
     
     //ShapeTest starts running
@@ -101,25 +147,32 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     }
     
     @objc func showNewShape(){
+        //Keep track of number of Shapes
+        numberOfShapes += 1
+        
         previousShapeIndex = currentShapeIndex
         
         var newShapeIndex = pickNewShapeIndex()
         
         //Avoid index repetition more than once
-        while currentShapeRepeat && currentShapeIndex == newShapeIndex {
+        while currentShapeRepeat && newShapeIndex == currentShapeIndex {
             newShapeIndex = pickNewShapeIndex()
         }
+        
         currentShapeIndex = newShapeIndex
+        
         //update currentShapeRepeat if currentShapeIndex = previousShapeIndex
         currentShapeRepeat = currentShapeIndex == previousShapeIndex
         
-        currentShapeStartTime = Date()
         updateShape()
+        
+        currentShapeStartTime = Date()
                 
     }
     @objc func updateShape(){
         if shapeImage != nil {
             shapeImage.setImage(UIImage(named: currentShapeName))
+            shapeImage!.setHidden(false)
         }
     }
     //YES-NO buttons are pressed -> showNewShape and check accuracy with previousShape
@@ -141,10 +194,42 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         let shapeReactionTime = shapeEndTime.timeIntervalSince(currentShapeStartTime)
         
         let score = answerIsCorrect ? 1 : 0
+        
+        testScore += score
+        
         //adding results per shape
-        //
+        shapeTestPrompt.addShapeResult(shapeName: currentShapeName, previousShapeName: previousShapeName, reactionTime: Float(shapeReactionTime), score: score)
+        
+        
+        print("PreviousShapeName: " + previousShapeName)
+        print("ReactionTime:  \(Float(shapeReactionTime))")
+        print("Score:  \(score)")
+        print("CurrentShapeName:  " + currentShapeName)
+        print("\n")
+        
+        
+        shapeImage.setHidden(true)
+        
+        //run code after a delay: 0.3 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.showImageDelay, execute: {
+            self.showNewShape()
+        })
     }
     
-    
+    //End test
+    private func finishTest(){
+        if testTimerSecondsLeft != nil {
+            shapeTestPrompt.completedDuration = shapeTestPrompt.duration - testTimerSecondsLeft!
+            shapeTestPrompt.finishedTime = Date()
+        
+            print("Final Score: \(testScore)")
+            print("NumberOfShapes:  \(numberOfShapes)")
+            
+            testEndedView()
+            
+        }
+        
+        //dismiss()
+    }
     
 }
