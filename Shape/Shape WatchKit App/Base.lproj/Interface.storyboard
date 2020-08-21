@@ -71,16 +71,11 @@
             <objects>
                 <controller id="Tko-NX-12F" customClass="RunShapeTestInterfaceController" customModule="Shape_WatchKit_Extension">
                     <items>
-                        <table alignment="left" id="rdh-9n-njt">
-                            <items>
-                                <tableRow id="Jsq-gC-kf6">
-                                    <group key="rootItem" width="1" alignment="left" id="Sha-aC-o9B"/>
-                                </tableRow>
-                            </items>
-                            <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                        </table>
                         <group width="178" height="151" alignment="center" layout="vertical" spacing="0.0" id="P9b-h4-2GX" userLabel="TestGroup">
                             <items>
+                                <textField width="1" widthAdjustment="22" height="150" alignment="left" id="lb4-4v-mEz">
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textField>
                                 <group width="1" height="104" alignment="left" layout="overlap" id="3bV-sK-hdy">
                                     <items>
                                         <timer width="33" height="18" alignment="right" textAlignment="left" format="abbreviated" previewedSeconds="45" id="mIp-zf-DSS">
@@ -122,6 +117,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="noButton" destination="vwA-ce-9Y3" id="bRb-av-vQY"/>
+                        <outlet property="resultsText" destination="lb4-4v-mEz" id="4YE-Ef-uHS"/>
                         <outlet property="shapeImage" destination="6EF-mk-w2M" id="Otm-3P-rZv"/>
                         <outlet property="startCountdownLabel" destination="1Hg-Od-bJS" id="Lbh-fo-ghW"/>
                         <outlet property="testTimer" destination="mIp-zf-DSS" id="yCm-BW-EuP"/>
@@ -129,7 +125,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="635" y="-45"/>
+            <point key="canvasLocation" x="635" y="59"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

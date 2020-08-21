@@ -17,6 +17,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     private var testTimerSecondsLeft: Int? = nil
     
     //UI elements
+    
+    @IBOutlet weak var resultsText: WKInterfaceTextField!
     @IBOutlet weak var startCountdownLabel: WKInterfaceLabel!
     @IBOutlet weak var shapeImage: WKInterfaceImage!
     @IBOutlet weak var testTimer: WKInterfaceTimer!
@@ -32,6 +34,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     private var testScore: Int = 0
     private var numberOfShapes: Int = 0
+    private var numberOfAttempts: Int = 0
     
     
     //Get currentShapeName and previousShapeName by index
@@ -94,7 +97,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
             switchToMainTest()
         }
         
-        if startCountdown <= 0 && testTimerSecondsLeft != nil {
+        if startCountdown <= 0 && testTimerSecondsLeft  != nil {
             testTimerSecondsLeft! -= 1
         }
         
@@ -118,6 +121,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         yesButton.setEnabled(false)
         
         shapeImage?.setHidden(false)
+        resultsText.setHidden(true)
     }
     
     @objc func showTestView(){
@@ -127,6 +131,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         yesButton.setEnabled(true)
         
         shapeImage.setHidden(false)
+        resultsText.setHidden(true)
         
         testTimer.setDate(NSDate(timeIntervalSinceNow:  45) as Date)
         testTimer.start()
@@ -139,6 +144,7 @@ class RunShapeTestInterfaceController: WKInterfaceController {
         yesButton.setHidden(true)
         
         shapeImage?.setHidden(true)
+        resultsText.setHidden(false)
     }
     
     //ShapeTest starts running
@@ -186,6 +192,8 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     //evaluate users response
     private func handdleButtonPress(answerIsForSameShape:Bool) {
+        //counting how many times the user click on a YES/NO button
+        numberOfAttempts += 1
         
         let currentShapeSameAsPrevious = currentShapeIndex == previousShapeIndex
         let answerIsCorrect = currentShapeSameAsPrevious ? answerIsForSameShape : !answerIsForSameShape
@@ -218,18 +226,22 @@ class RunShapeTestInterfaceController: WKInterfaceController {
     
     //End test
     private func finishTest(){
+        timer?.invalidate()
+        
         if testTimerSecondsLeft != nil {
             shapeTestPrompt.completedDuration = shapeTestPrompt.duration - testTimerSecondsLeft!
             shapeTestPrompt.finishedTime = Date()
         
             print("Final Score: \(testScore)")
             print("NumberOfShapes:  \(numberOfShapes)")
+            print("NumberOfAttempts:  \(numberOfAttempts)" )
             
-            testEndedView()
-            
+            //Show the testEndedView to see the results in a TextField, for now we are using dismiss() to go back to the instructions interface.
+            //testEndedView()
+            //resultsText.setText("Score:  \(testScore) \n NumberOfAttempts: \(numberOfAttempts) \n NumberOfShapes:  \(numberOfShapes)")
         }
         
-        //dismiss()
+        dismiss()
     }
     
 }

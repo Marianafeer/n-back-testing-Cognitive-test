@@ -14,11 +14,11 @@ protocol Prompt {
 }
 
 class ShapeTest : Prompt {
-
+    
     let duration = Constants.shapeTestDuration
     var resultsArray: [SingleShapeResult] = [SingleShapeResult]()
     
-    let FinalResutls: [ShapeTestResult] = [ShapeTestResult]()
+    let FinalResult: [ShapeTestResult] = [ShapeTestResult]()
     
     var canMoveToNext: Bool {
         return false
